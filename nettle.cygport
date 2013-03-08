@@ -1,0 +1,17 @@
+NAME="nettle"
+VERSION=2.5
+RELEASE=1
+CATEGORY="Libs"
+SUMMARY="Low-level cryptographic library"
+DESCRIPTION="Nettle is a cryptographic library that is designed to fit easily
+in more or less any context: In crypto toolkits for object-oriented languages,
+in applications like LSH or GNUPG, or even in kernel space."
+HOMEPAGE="http://www.lysator.liu.se/~nisse/nettle/"
+SRC_URI="http://www.lysator.liu.se/~nisse/archive/nettle-${VERSION}.tar.gz"
+SRC_DIR="nettle-${VERSION}"
+
+PKG_NAMES="nettle libnettle4_4 libhogweed2_2 libnettle-devel"
+nettle_CONTENTS="usr/bin/*.exe usr/share/"
+libnettle4_4_CONTENTS="usr/bin/cygnettle-4-4.dll"
+libhogweed2_2_CONTENTS="usr/bin/cyghogweed-2-2.dll"
+libnettle_devel_CONTENTS="usr/include/ usr/lib/"

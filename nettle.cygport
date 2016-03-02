@@ -1,6 +1,6 @@
 NAME="nettle"
 VERSION=2.7
-RELEASE=1
+RELEASE=2
 CATEGORY="Libs"
 SUMMARY="Low-level cryptographic library"
 DESCRIPTION="Nettle is a cryptographic library that is designed to fit easily

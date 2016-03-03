@@ -1,6 +1,6 @@
 NAME="nettle"
-VERSION=2.7
-RELEASE=2
+VERSION=2.7.1
+RELEASE=1
 CATEGORY="Libs"
 SUMMARY="Low-level cryptographic library"
 DESCRIPTION="Nettle is a cryptographic library that is designed to fit easily
@@ -9,7 +9,11 @@ in applications like LSH or GNUPG, or even in kernel space."
 HOMEPAGE="http://www.lysator.liu.se/~nisse/nettle/"
 SRC_URI="http://www.lysator.liu.se/~nisse/archive/nettle-${VERSION}.tar.gz"
 SRC_DIR="nettle-${VERSION}"
-PATCH_URI="2.6-soname.patch"
+PATCH_URI="
+	http://pkgs.fedoraproject.org/cgit/rpms/nettle.git/plain/nettle-2.7.1-tmpalloc.patch?h=f22
+	http://pkgs.fedoraproject.org/cgit/rpms/nettle.git/plain/nettle-2.7.1-ecc-cve.patch?h=f22
+	2.6-soname.patch
+"
 
 PKG_NAMES="nettle libnettle4 libhogweed2 libnettle-devel"
 nettle_CONTENTS="usr/bin/*.exe usr/share/"

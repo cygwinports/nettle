@@ -1,0 +1,11 @@
+--- origsrc/nettle-3.3/Makefile.in	2016-10-01 02:28:38.000000000 -0500
++++ src/nettle-3.3/Makefile.in	2017-05-01 20:57:23.545579000 -0500
+@@ -164,7 +164,7 @@ hogweed_SOURCES = sexp.c sexp-format.c \
+ 		  gmp-glue.c cnd-copy.c \
+ 		  ecc-mod.c ecc-mod-inv.c \
+ 		  ecc-mod-arith.c ecc-pp1-redc.c ecc-pm1-redc.c \
+-		  ecc-192.c ecc-224.c ecc-256.c ecc-384.c ecc-521.c \
++		  ecc-256.c ecc-384.c ecc-521.c \
+ 		  ecc-25519.c \
+ 		  ecc-size.c ecc-j-to-a.c ecc-a-to-j.c \
+ 		  ecc-dup-jj.c ecc-add-jja.c ecc-add-jjj.c \

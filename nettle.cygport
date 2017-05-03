@@ -1,5 +1,5 @@
 NAME="nettle"
-VERSION=2.7.1
+VERSION=3.3
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="Low-level cryptographic library"
@@ -7,16 +7,26 @@ DESCRIPTION="Nettle is a cryptographic library that is designed to fit easily
 in more or less any context: In crypto toolkits for object-oriented languages,
 in applications like LSH or GNUPG, or even in kernel space."
 HOMEPAGE="http://www.lysator.liu.se/~nisse/nettle/"
-SRC_URI="http://www.lysator.liu.se/~nisse/archive/nettle-${VERSION}.tar.gz"
+#SRC_URI="http://www.lysator.liu.se/~nisse/archive/nettle-${VERSION}.tar.gz"
+md5sum=ddd625492ff671845c9306aa96837214
+SRC_URI="http://pkgs.fedoraproject.org/repo/pkgs/nettle/nettle-${VERSION}-hobbled.tar.xz/${md5sum}/nettle-${VERSION}-hobbled.tar.xz"
 SRC_DIR="nettle-${VERSION}"
 PATCH_URI="
-	http://pkgs.fedoraproject.org/cgit/rpms/nettle.git/plain/nettle-2.7.1-tmpalloc.patch?h=f22
-	http://pkgs.fedoraproject.org/cgit/rpms/nettle.git/plain/nettle-2.7.1-ecc-cve.patch?h=f22
-	2.6-soname.patch
+	http://pkgs.fedoraproject.org/cgit/rpms/nettle.git/plain/nettle-3.3-remove-ecc-testsuite.patch
+	http://pkgs.fedoraproject.org/cgit/rpms/nettle.git/plain/nettle-3.2-version-h.patch
+	3.3-ecc-hobbled.patch
+	3.3-testsuite.patch
 "
 
-PKG_NAMES="nettle libnettle4 libhogweed2 libnettle-devel"
+PKG_NAMES="nettle libnettle6 libhogweed4 libnettle-devel"
 nettle_CONTENTS="usr/bin/*.exe usr/share/"
-libnettle4_CONTENTS="usr/bin/cygnettle-4.dll"
-libhogweed2_CONTENTS="usr/bin/cyghogweed-2.dll"
+libnettle6_CONTENTS="usr/bin/cygnettle-6.dll"
+libhogweed4_CONTENTS="usr/bin/cyghogweed-4.dll"
 libnettle_devel_CONTENTS="usr/include/ usr/lib/"
+
+CYGCONF_ARGS="--enable-fat"
+
+src_test() {
+	cd ${B}
+	cygtest
+}

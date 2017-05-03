@@ -1,0 +1,36 @@
+--- origsrc/nettle-3.3/examples/Makefile.in	2016-10-01 02:28:38.000000000 -0500
++++ src/nettle-3.3/examples/Makefile.in	2017-05-01 21:54:49.591076900 -0500
+@@ -117,7 +117,7 @@ $(TARGETS) : io.$(OBJEXT) ../libnettle.s
+ $(HOGWEED_TARGETS): ../libhogweed.stamp
+ 
+ check: $(TS_ALL)
+-	LD_LIBRARY_PATH=../.lib PATH="../.lib:$$PATH" srcdir="$(srcdir)" \
++	LD_LIBRARY_PATH=../.lib PATH="..:$$PATH" srcdir="$(srcdir)" \
+ 	  EMULATOR="$(EMULATOR)" EXEEXT="$(EXEEXT)" \
+           "$(top_srcdir)"/run-tests $(TS_ALL)
+ 
+--- origsrc/nettle-3.3/testsuite/Makefile.in	2016-10-01 02:28:38.000000000 -0500
++++ src/nettle-3.3/testsuite/Makefile.in	2017-05-01 21:51:23.686546700 -0500
+@@ -123,7 +123,7 @@ VALGRIND = valgrind --error-exitcode=1 -
+ 
+ # The PATH update is for locating dlls on w*ndows.
+ check: $(TS_ALL)
+-	LD_LIBRARY_PATH=../.lib PATH="../.lib:$$PATH" srcdir="$(srcdir)" \
++	LD_LIBRARY_PATH=../.lib PATH="../:$$PATH" srcdir="$(srcdir)" \
+ 	  EMULATOR="$(EMULATOR)" NM="$(NM)" EXEEXT="$(EXEEXT)" \
+           $(top_srcdir)/run-tests $(TS_ALL)
+ 
+--- origsrc/nettle-3.3/testsuite/dlopen-test.c	2016-10-01 02:28:38.000000000 -0500
++++ src/nettle-3.3/testsuite/dlopen-test.c	2017-05-01 21:53:52.146405700 -0500
+@@ -9,7 +9,11 @@ int
+ main (int argc UNUSED, char **argv UNUSED)
+ {
+ #if HAVE_LIBDL
++#ifdef __CYGWIN__
++  void *handle = dlopen ("../cygnettle-6.dll", RTLD_NOW);
++#else
+   void *handle = dlopen ("../libnettle.so", RTLD_NOW);
++#endif
+   int (*get_version)(void);
+   if (!handle)
+     {

@@ -1,5 +1,5 @@
 NAME="nettle"
-VERSION=3.4
+VERSION=3.4.1
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="Low-level cryptographic library"
@@ -8,7 +8,7 @@ in more or less any context: In crypto toolkits for object-oriented languages,
 in applications like LSH or GNUPG, or even in kernel space."
 HOMEPAGE="http://www.lysator.liu.se/~nisse/nettle/"
 #SRC_URI="http://www.lysator.liu.se/~nisse/archive/nettle-${VERSION}.tar.gz"
-sha512sum=3b0d596be933d6ebdadf07ba92ac24c18a231b0fafe9f44bd9e564b7a084266b6d5b111d8b02e5eca86331cdbfb59efde2c7b5e98f4c1841007cffb3f81ee98b
+sha512sum=9a5b4c316222f22feb692106ceae299c2b59229ef96cac1739095c65c9ddee4b1d542579e5b49d4863bd6a8c093611f0fdd1c7cb3251844c85b7e089e406ffc5
 SRC_URI="https://src.fedoraproject.org/repo/pkgs/nettle/nettle-${VERSION}-hobbled.tar.xz/sha512/${sha512sum}/nettle-${VERSION}-hobbled.tar.xz"
 SRC_DIR="nettle-${VERSION}"
 PATCH_URI="
